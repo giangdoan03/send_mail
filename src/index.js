@@ -40,10 +40,10 @@ app.post("/send_email", function(req, response){
       });
 
       var mailOptions = {
-        from: 'doangiang665@gmail.com',
-        to: 'dvg8.vcc@gmail.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
+        from: from,
+        to: to,
+        subject: subject,
+        text: message
       };
       
       transporter.sendMail(mailOptions, function (error, info) {
@@ -52,8 +52,9 @@ app.post("/send_email", function(req, response){
         } else {
           console.log('Email sent: ' + info.response);
         }
+        response.redirect("/");
       });
-      
+
 
 })
 
